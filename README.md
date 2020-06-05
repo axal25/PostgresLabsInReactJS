@@ -3,7 +3,7 @@ Postgres laboratories in react.js
 
 [Github Pages live version link](http://axal25.github.io/PostgresLabsInReactJS)
 
-
+npm run deploy
 ------------------------------------------------------------------------------------
 
 

@@ -214,7 +214,7 @@ class PostgreSQLInstallData {
                         [{output: "bash-5.0#"}],
                         [{
                             text: "Exit bash of the container:",
-                            command: "bash-5.0# \exit"
+                            command: "bash-5.0# \\exit"
                         }],
                         [{output: "$"}]
                     ]

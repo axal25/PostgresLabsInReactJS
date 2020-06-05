@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import LookBehindReplacement from "./LookBehindReplacement";
 
 class Instruction extends Component {
     render() {
@@ -61,22 +62,17 @@ class Instruction extends Component {
             .map(row => row
                 .split(/(\s\s+)|(\s\|)|(\|\s)|(--)|(\+)/g)
                 .map(column => column
-                    ? column
-                        .replace(/(((?<![a-z",):\d])\s)|(\+)|(\|\s)|(\s\|)|(-(?![A-z])))/gi, '')
+                    ? LookBehindReplacement.lookBehindReplacement(column)
+                        .replace(/(\+)|(\|\s)|(\s\|)|(-(?![A-z]))/gi, '')
                         .replace(/(\|)|(\s(?![a-z",(:\d]))/gi, '')
                     : column)
                 .filter(column => column && column !== '')
             );
         tableEntries = tableEntries.filter(row => row.length !== 0 && (row.length !== 1 || row[0] !== undefined || row[0] !== ''));
-        tableEntries.forEach((row, rowIndex) => {
-            console.log(`[${rowIndex}] row:`);
-            console.log(row);
-        });
         tableEntries
-            .map((row, rowIndex) => {
+            .forEach((row, rowIndex) => {
                 let currentRowMaxColumns = 0;
-                row.map((column, columnIndex) => {
-                    console.log(`${rowIndex}.${columnIndex}. column:"${column}"`);
+                row.forEach((column, columnIndex) => {
                     currentRowMaxColumns++;
                     if (columnAmountInRow[rowIndex])
                         columnAmountInRow[rowIndex] = currentRowMaxColumns;
@@ -84,29 +80,23 @@ class Instruction extends Component {
                         columnAmountInRow.push(currentRowMaxColumns);
                     if (maxColumnsInTable < currentRowMaxColumns)
                         maxColumnsInTable = currentRowMaxColumns;
-                    return column;
                 })
             });
         return (
             <table className={this.props.classNames.tables.output}>
                 <tbody>{
-                    tableEntries.map((row, rowIndex) => {
-                        console.log(`row[${rowIndex}]:`);
-                        console.log(row);
-                        return <tr key={rowIndex}>
-                            {row.map((column, columnIndex) => {
-                                    console.log(`columnAmountInRow[${rowIndex}]:`);
-                                    console.log(columnAmountInRow[rowIndex]);
-                                    return <th
-                                        key={columnIndex}
-                                        colSpan={maxColumnsInTable / columnAmountInRow[rowIndex]}
-                                    >
-                                        {column}
-                                    </th>;
-                                }
+                    tableEntries.map((row, rowIndex) =>
+                        <tr key={rowIndex}>
+                            {row.map((column, columnIndex) =>
+                                <th
+                                    key={columnIndex}
+                                    colSpan={maxColumnsInTable / columnAmountInRow[rowIndex]}
+                                >
+                                    {column}
+                                </th>
                             )}
                         </tr>
-                    })
+                    )
                 }
                 </tbody>
             </table>

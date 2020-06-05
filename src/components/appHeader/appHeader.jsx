@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import postgresLogo from "../../../public/logos/postgres_logo.png";
 
 class AppHeader extends Component {
-    state = {};
+    state = {
+        title: "PostgreSQL Laboratories",
+    };
 
     render() {
         return (
@@ -13,10 +15,14 @@ class AppHeader extends Component {
                     alt="Static-main-logoAlt"
                 />
                 <h2>
-                    <span className={this.props.classNames.spans.headerTitle}>PostgreSQL Laboratories</span>
+                    <span className={this.props.classNames.spans.headerTitle}>{this.state.title}</span>
                 </h2>
             </div>
         );
+    }
+
+    componentDidMount() {
+        document.title = this.state.title;
     }
 }
 
