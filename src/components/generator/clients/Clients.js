@@ -168,7 +168,7 @@ class Clients {
             {length: 11},
             ((phoneChar, phoneCharIndex) => {
                     if (
-                        [3, 5].filter(spaceIndex => spaceIndex === phoneCharIndex)
+                        [3, 7].filter(spaceIndex => spaceIndex === phoneCharIndex)
                             .length === 0
                     ) return Math.floor(
                         Math.random() * 9

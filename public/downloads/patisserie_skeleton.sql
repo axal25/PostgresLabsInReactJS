@@ -39,7 +39,7 @@ CREATE TABLE chocolates
 CREATE TABLE boxes
 (
     idBox       INTEGER PRIMARY KEY,
-    name        VARCHAR(40)   NOT NULL,
+    name        VARCHAR(75)   NOT NULL,
     description VARCHAR(150),
     price       NUMERIC(7, 2) NOT NULL,
     stock       INTEGER       NOT NULL

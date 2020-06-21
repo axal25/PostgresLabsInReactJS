@@ -22,17 +22,17 @@ class Generator extends Component {
             amountOfClients: {
                 id: "amountOfClients",
                 label: "Amount of Clients to generate",
-                value: 10000
+                value: 1000
             },
             amountOfChocolates: {
                 id: "amountOfChocolates",
                 label: "Amount of Chocolates to generate",
-                value: 500
+                value: 50
             },
             amountOfBoxes: {
                 id: "amountOfBoxes",
                 label: "Amount of Boxes to generate",
-                value: 250
+                value: 25
             },
         },
         sources: [

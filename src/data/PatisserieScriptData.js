@@ -41,7 +41,7 @@ class PatisserieScriptData {
             "CREATE TABLE boxes\n" +
             "(\n" +
             "    idBox       INTEGER PRIMARY KEY,\n" +
-            "    name        VARCHAR(40)   NOT NULL,\n" +
+            "    name        VARCHAR(75)   NOT NULL,\n" +
             "    description VARCHAR(150),\n" +
             "    price       NUMERIC(7, 2) NOT NULL,\n" +
             "    stock       INTEGER       NOT NULL\n" +
