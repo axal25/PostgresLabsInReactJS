@@ -8,6 +8,8 @@ import Laboratory from "./components/laboratory/laboratory";
 import LaboratoriesData from "./data/LaboratoriesData";
 import PostgreSQLInstallData from "./data/PostgreSQLInstallData";
 import ClassNamesData from "./data/ClassNamesData";
+import Generator from "./components/generator/generator";
+import Warning from "./components/warning/warning";
 
 class App extends Component {
     state = {
@@ -15,18 +17,20 @@ class App extends Component {
         laboratoryNumbers: undefined,
         currentLaboratory: undefined,
         isInstructionCurrentlyChosen: false,
-        postgreSQLInstall: new PostgreSQLInstallData().postgreSQLInstallData,
-        classNames: new ClassNamesData().classNames
+        isGeneratorCurrentlyChosen: false,
+        postgreSQLInstall: PostgreSQLInstallData.getPostgreSQLInstallData(),
+        classNames: ClassNamesData.getClassNames()
     };
 
     constructor(props) {
         super(props);
         this.onNavBarInstructionBtnClick = this.onNavBarInstructionBtnClick.bind(this);
         this.onNavBarLaboratoryBtnClick = this.onNavBarLaboratoryBtnClick.bind(this);
+        this.onNavBarGeneratorBtnClick = this.onNavBarGeneratorBtnClick.bind(this);
     }
 
     componentDidMount() {
-        const laboratories = new LaboratoriesData().laboratories;
+        const laboratories = LaboratoriesData.getLaboratories();
         const currentLaboratoryIndex = laboratories
             .findIndex((laboratory) => {
                 return laboratory && (Object.keys(laboratory).length > 0);
@@ -65,6 +69,7 @@ class App extends Component {
             <NavBar
                 onInstructionBtnClick={this.onNavBarInstructionBtnClick}
                 onExerciseBtnClick={this.onNavBarLaboratoryBtnClick}
+                onGeneratorBtnClick={this.onNavBarGeneratorBtnClick}
                 laboratoryNumbers={this.state.laboratoryNumbers}
                 instructionBtnText={this.state.postgreSQLInstall.title}
                 classNames={this.state.classNames}
@@ -73,9 +78,13 @@ class App extends Component {
     }
 
     renderInstructionOrLaboratory() {
-        return this.state.currentLaboratoryIndex === -1 && this.state.isInstructionCurrentlyChosen
+        return this.state.currentLaboratoryIndex === -1 && !this.state.isGeneratorCurrentlyChosen && this.state.isInstructionCurrentlyChosen
             ? this.renderPostgreSQLInstall()
-            : this.renderLaboratory();
+            : this.state.currentLaboratoryIndex !== -1 && !this.state.isGeneratorCurrentlyChosen && !this.state.isInstructionCurrentlyChosen
+                ? this.renderLaboratory()
+                : this.state.currentLaboratoryIndex === -1 && this.state.isGeneratorCurrentlyChosen && !this.state.isInstructionCurrentlyChosen
+                    ? this.renderGenerator()
+                    : this.renderWarning("Not satisfied requirements to render any main content components (instruction, laboratory or generator).");
     }
 
     renderPostgreSQLInstall() {
@@ -98,15 +107,35 @@ class App extends Component {
         );
     }
 
+    renderGenerator() {
+        return (
+            <Generator classNames={this.state.classNames}/>
+        );
+    }
+
+    renderWarning(message) {
+        return (
+            <Warning classNames={this.state.classNames} message={message}/>
+        );
+    }
+
     onNavBarInstructionBtnClick() {
         this.setState({currentLaboratoryIndex: -1});
         this.setState({isInstructionCurrentlyChosen: true});
+        this.setState({isGeneratorCurrentlyChosen: false});
     }
 
     onNavBarLaboratoryBtnClick(clickedLabIndex) {
         this.setState({currentLaboratoryIndex: clickedLabIndex});
+        this.setState({currentLaboratory: LaboratoriesData.getLaboratories()[clickedLabIndex]});
         this.setState({isInstructionCurrentlyChosen: false});
-        this.setState({currentLaboratory: new LaboratoriesData().laboratories[clickedLabIndex]});
+        this.setState({isGeneratorCurrentlyChosen: false});
+    }
+
+    onNavBarGeneratorBtnClick() {
+        this.setState({currentLaboratoryIndex: -1});
+        this.setState({isInstructionCurrentlyChosen: false});
+        this.setState({isGeneratorCurrentlyChosen: true});
     }
 }
 

@@ -1,6 +1,6 @@
 class ClassNamesData {
-    constructor() {
-        this.classNames = {
+    static getClassNames() {
+        return {
             spans: {
                 headerTitle: "badge text-light bg-postgres Rounded-Border border-white",
                 title: "badge text-light bg-postgres Rounded-Border border-secondary",
@@ -10,7 +10,7 @@ class ClassNamesData {
                 secondary: "badge badge-secondary m-2",
                 primaryPill: "badge badge-pill bg-postgres border-secondary text-dark m-2",
                 success: "badge badge-success text-dark m-2",
-                instruction: "text-postgres"
+                instruction: "text-postgres",
             },
             buttons: {
                 primary: {
@@ -20,7 +20,8 @@ class ClassNamesData {
                 secondary: "badge m-2 btn-secondary"
             },
             textAreas: {
-                autoResize: "bg-postgres text-light Panel-TextareaAutoresize Rounded-Border"
+                autoResize: "bg-postgres text-light Rounded-Border Panel-TextareaAutoresize",
+                input: "bg-postgres text-light Rounded-Border"
             },
             badges: {
                 parents: {
@@ -36,10 +37,18 @@ class ClassNamesData {
                 instruction: "Wrap PostgreSQLInstallInstruction",
                 section: "PostgreSQLInstallSection Rounded-Border m-2 bg-dark",
                 navBar: "NavBar",
-                postgres: "PostgreSQLInstall"
+                postgres: "PostgreSQLInstall",
+                exercise: "Exercise",
+                panel: "Panel",
+                generator: "Panel Generator",
+                form: "form-group mb-2 Center",
+                warning: "bg-warning text-dark Rounded-Border m-2 font-weight-bold Warning",
             },
             tables: {
                 output: "Output bg-secondary text-dark Rounded-Border"
+            },
+            forms: {
+                inline: "form-inline Center"
             }
         };
     }

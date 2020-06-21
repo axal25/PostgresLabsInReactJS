@@ -6,7 +6,7 @@ class Panel extends Component {
 
     render() {
         return (
-            <div className="Panel">
+            <div className={this.props.classNames.divs.panel}>
                 {this.renderBtn()}
                 {this.renderTextArea()}
             </div>

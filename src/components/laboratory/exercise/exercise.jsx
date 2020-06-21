@@ -5,41 +5,32 @@ class Exercise extends Component {
     state = {
         isAtLeastHalfOfPanelsVisible: false,
         panels: [
-            {
-                keyIndex: 0,
-                name: "question",
-                text: this.props.exerciseData.question,
-                visible: false,
-            },
-            {
-                keyIndex: 1,
-                name: "result",
-                text: this.props.exerciseData.result,
-                visible: false,
-            },
-            {
-                keyIndex: 2,
-                name: "solution",
-                text: this.props.exerciseData.solution,
-                visible: false,
-            },
+            this.props.exerciseData.question
+                ? {
+                    name: "question",
+                    text: this.props.exerciseData.question,
+                    visible: false,
+                }
+                : undefined,
+            this.props.exerciseData.result ?
+                {
+                    name: "result",
+                    text: this.props.exerciseData.result,
+                    visible: false,
+                }
+                : undefined,
+            this.props.exerciseData.solution ?
+                {
+                    name: "solution",
+                    text: this.props.exerciseData.solution,
+                    visible: false,
+                }
+                : undefined,
         ],
     };
 
     constructor(props) {
         super(props);
-        this.state.panels
-            .find((panel) => panel.name === "question")
-            .text = this.props.exerciseData.question;
-        ;
-        this.state.panels
-            .find((panel) => panel.name === "result")
-            .text = this.props.exerciseData.result;
-        ;
-        this.state.panels
-            .find((panel) => panel.name === "solution")
-            .text = this.props.exerciseData.solution;
-        ;
         this.handleSwitchVisibility = this.handleSwitchVisibility.bind(this);
         this.handleSwitchVisibilityAll = this.handleSwitchVisibilityAll.bind(this);
         this.isAtLeastHalfOfPanelsVisibilitySetTo = this.isAtLeastHalfOfPanelsVisibilitySetTo.bind(
@@ -50,7 +41,7 @@ class Exercise extends Component {
 
     render() {
         return (
-            <div className="Exercise">
+            <div className={this.props.classNames.divs.exercise}>
                 <span className={this.props.classNames.spans.separator}> </span>
                 <div>
                     {this.renderTitleAndSubTitle()}
@@ -93,19 +84,21 @@ class Exercise extends Component {
 
     renderPanels() {
         return (
-            this.state.panels.map((panel) => (
-                <Panel
-                    key={panel.keyIndex}
-                    name={panel.name}
-                    text={panel.text}
-                    visible={panel.visible}
-                    onSwitchVisibility={() =>
-                        this.handleSwitchVisibilityAndRefreshIsAtLeastHalfOfPanelsVisible(
-                            panel.keyIndex
-                        )
-                    }
-                    classNames={this.props.classNames}
-                />
+            this.state.panels.map((panel, index) => (
+                panel
+                    ? <Panel
+                        key={index}
+                        name={panel.name}
+                        text={panel.text}
+                        visible={panel.visible}
+                        onSwitchVisibility={() =>
+                            this.handleSwitchVisibilityAndRefreshIsAtLeastHalfOfPanelsVisible(
+                                index
+                            )
+                        }
+                        classNames={this.props.classNames}
+                    />
+                    : null
             ))
         );
     }
@@ -115,11 +108,9 @@ class Exercise extends Component {
     }
 
     handleSwitchVisibilityAll() {
-        this.state.panels
-            .filter(
-                (panel) => panel.visible === this.state.isAtLeastHalfOfPanelsVisible
-            )
-            .forEach((panel) => this.handleSwitchVisibility(panel.keyIndex));
+        if (this.state.panels.length !== 0)
+            this.state.panels
+                .forEach((panel, index) => panel && this.handleSwitchVisibility(index));
         this.refreshIsAtLeastHalfOfPanelsVisible();
     }
 
@@ -144,8 +135,8 @@ class Exercise extends Component {
 
     isAtLeastHalfOfPanelsVisibilitySetTo(boolean) {
         return (
-            this.state.panels.filter((panel) => panel.visible === boolean).length >=
-            this.state.panels.length / 2
+            this.state.panels.filter((panel) => panel && panel.visible === boolean).length >=
+            this.state.panels.filter((panel) => panel).length / 2
         );
     }
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import postgresLogo from "../../../public/logos/postgres_logo.png";
+import postgresLogo from "../../logos/postgres_logo.png";
 
 class AppHeader extends Component {
     state = {

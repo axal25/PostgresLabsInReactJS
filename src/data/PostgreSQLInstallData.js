@@ -1,6 +1,6 @@
 class PostgreSQLInstallData {
-    constructor() {
-        this.postgreSQLInstallData = {
+    static getPostgreSQLInstallData() {
+        return {
             title: "Install PostgreSQL",
             subTitle: "using Docker container",
             sections: [
@@ -245,7 +245,7 @@ class PostgreSQLInstallData {
                 {
                     title: "Credits",
                     instructions: [[{
-                        text: "Instruction based on youtube video \"Docker and PostgreSQL in [10 Minutes]\" by  Amigoscode:",
+                        text: "Instruction based on youtube video \"Docker and PostgreSQL in [10 Minutes]\" by Amigoscode:",
                         link: "https://www.youtube.com/watch?v=aHbE3pTyG-Q"
                     }]]
                 }

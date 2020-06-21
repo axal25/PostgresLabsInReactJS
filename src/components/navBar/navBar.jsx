@@ -7,6 +7,7 @@ class NavBar extends Component {
         return (
             <div className={this.props.classNames.divs.navBar}>
                 {this.getInstructionBtn()}
+                {this.getGeneratorBtn()}
                 {this.getExerciseBtns()}
             </div>
         );
@@ -44,6 +45,17 @@ class NavBar extends Component {
                 {`Lab #${laboratoryNumber}`}
             </button>
         ));
+    }
+
+    getGeneratorBtn() {
+        return (
+            <button
+                className={this.props.classNames.buttons.primary.autoSize}
+                onClick={() => this.props.onGeneratorBtnClick()}
+            >
+                Generator
+            </button>
+        );
     }
 }
 

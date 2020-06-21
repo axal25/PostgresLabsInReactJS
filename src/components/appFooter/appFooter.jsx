@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import githubLogo from "../../../public/logos/github_logo.png";
-import reactLogo from "../../../public/logos/logo.svg";
-import aghLogo from "../../../public/logos/agh_logo.png";
-import youtubeLogo from "../../../public/logos/youtube_logo.png";
+import githubLogo from "../../logos/github_logo.png";
+import reactLogo from "../../logos/logo.svg";
+import aghLogo from "../../logos/agh_logo.png";
+import youtubeLogo from "../../logos/youtube_logo.png";
 
 class AppFooter extends Component {
     state = {};

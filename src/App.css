@@ -138,9 +138,17 @@ div.Panel > th {
     width: 10em;
 }
 
+.MuiTextField-root {
+}
+
 .Panel-TextareaAutoresize {
     width: 100%;
-    margin: 6px 0px 0px 0px;
+    margin: 6px 0 0 0;
+    font-size: 12px;
+}
+
+.Input:first-line {
+    display: inline-block;
 }
 
 .Rounded-Border {
@@ -177,4 +185,23 @@ div.PostgreSQLInstallInstruction {
 table.Output {
     width: 100%;
     margin: 5px 0 5px 0;
+}
+
+div.Generator {
+    display: table;
+    margin: auto;
+}
+
+form.Center {
+    display: table;
+    margin: auto;
+}
+
+div.Warning {
+    padding: 10px;
+}
+
+div.Center {
+    display: flex;
+    justify-content: center;
 }
