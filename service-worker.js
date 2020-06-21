@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/PostgresLabsInReactJS/precache-manifest.2b64af485441b12426ebbf320a4fedd2.js"
+  "/PostgresLabsInReactJS/precache-manifest.792562edd7278c50d683010bc1aad04d.js"
 );
 
 self.addEventListener('message', (event) => {
