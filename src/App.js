@@ -3,13 +3,10 @@ import AppHeader from "./components/appHeader/appHeader";
 import "./App.css";
 import NavBar from "./components/navBar/navBar";
 import AppFooter from "./components/appFooter/appFooter";
-import PostgreSQLInstall from "./components/postgreSQLInstall/postgreSQLInstall";
-import Laboratory from "./components/laboratory/laboratory";
-import LaboratoriesData from "./data/LaboratoriesData";
+import LaboratoriesData from "./data/laboratories/LaboratoriesData";
 import PostgreSQLInstallData from "./data/PostgreSQLInstallData";
 import ClassNamesData from "./data/ClassNamesData";
-import Generator from "./components/generator/generator";
-import Warning from "./components/warning/warning";
+import Contents from "./components/contents/contents";
 
 class App extends Component {
     state = {
@@ -55,7 +52,7 @@ class App extends Component {
                 <div className={this.state.classNames.divs.app}>
                     <AppHeader classNames={this.state.classNames}/>
                     {this.renderNavBar()}
-                    {this.renderInstructionOrLaboratory()}
+                    {this.renderContents()}
                 </div>
                 <div className={this.state.classNames.divs.wrapper}>
                     <AppFooter classNames={this.state.classNames}/>
@@ -71,52 +68,22 @@ class App extends Component {
                 onExerciseBtnClick={this.onNavBarLaboratoryBtnClick}
                 onGeneratorBtnClick={this.onNavBarGeneratorBtnClick}
                 laboratoryNumbers={this.state.laboratoryNumbers}
-                instructionBtnText={this.state.postgreSQLInstall.title}
+                instruction={this.state.postgreSQLInstall}
                 classNames={this.state.classNames}
             />
         );
     }
 
-    renderInstructionOrLaboratory() {
-        return this.state.currentLaboratoryIndex === -1 && !this.state.isGeneratorCurrentlyChosen && this.state.isInstructionCurrentlyChosen
-            ? this.renderPostgreSQLInstall()
-            : this.state.currentLaboratoryIndex !== -1 && !this.state.isGeneratorCurrentlyChosen && !this.state.isInstructionCurrentlyChosen
-                ? this.renderLaboratory()
-                : this.state.currentLaboratoryIndex === -1 && this.state.isGeneratorCurrentlyChosen && !this.state.isInstructionCurrentlyChosen
-                    ? this.renderGenerator()
-                    : this.renderWarning("Not satisfied requirements to render any main content components (instruction, laboratory or generator).");
-    }
-
-    renderPostgreSQLInstall() {
-        return <PostgreSQLInstall postgreSQLInstall={this.state.postgreSQLInstall} classNames={this.state.classNames}/>;
-    }
-
-    renderLaboratory() {
-        return (
-            this.state.laboratoryNumbers
-                ? <Laboratory
-                    laboratoryData={
-                        this.state.currentLaboratory
-                    }
-                    number={
-                        this.state.currentLaboratoryIndex
-                    }
-                    classNames={this.state.classNames}
-                />
-                : null
-        );
-    }
-
-    renderGenerator() {
-        return (
-            <Generator classNames={this.state.classNames}/>
-        );
-    }
-
-    renderWarning(message) {
-        return (
-            <Warning classNames={this.state.classNames} message={message}/>
-        );
+    renderContents() {
+        return <Contents
+            classNames={this.state.classNames}
+            isInstructionCurrentlyChosen={this.state.isInstructionCurrentlyChosen}
+            postgreSQLInstall={this.state.postgreSQLInstall}
+            isGeneratorCurrentlyChosen={this.state.isGeneratorCurrentlyChosen}
+            laboratoryNumbers={this.state.laboratoryNumbers}
+            currentLaboratoryIndex={this.state.currentLaboratoryIndex}
+            currentLaboratory={this.state.currentLaboratory}
+        />;
     }
 
     onNavBarInstructionBtnClick() {

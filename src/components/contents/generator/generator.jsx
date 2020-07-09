@@ -79,7 +79,7 @@ class Generator extends Component {
     }
 
     renderTitle() {
-        return <h3><span className={this.props.classNames.spans.title}>Generator</span></h3>;
+        return <h3><span className={this.props.classNames.spans.primaryTitle}>Generator</span></h3>;
     }
 
     renderDescription() {
@@ -137,7 +137,7 @@ class Generator extends Component {
             >
                 <div className={classNames.divs.form}>
                     <span>
-                        <span className={classNames.spans.secondary}>
+                        <span className={classNames.spans.tertiaryTitle}>
                             <label
                                 htmlFor={inputClients.id}
                             >
@@ -154,7 +154,7 @@ class Generator extends Component {
                         />
                     </span>
                     <span>
-                        <span className={classNames.spans.secondary}>
+                        <span className={classNames.spans.tertiaryTitle}>
                             <label
                                 htmlFor={inputChocolates.id}
                             >
@@ -171,7 +171,7 @@ class Generator extends Component {
                         />
                     </span>
                     <span>
-                        <span className={classNames.spans.secondary}>
+                        <span className={classNames.spans.tertiaryTitle}>
                             <label
                                 htmlFor={inputBoxes.id}
                             >
@@ -214,7 +214,7 @@ class Generator extends Component {
     renderSources() {
         return (
             <React.Fragment>
-                <span className={this.props.classNames.spans.secondary}>Sources</span>
+                <span className={this.props.classNames.spans.tertiaryTitle}>Sources</span>
                 <div className={this.props.classNames.divs.section}>
                     {this.state.sources.map((source, index) => this.getLinkIfLink(index, source.link, source.description))}
                 </div>

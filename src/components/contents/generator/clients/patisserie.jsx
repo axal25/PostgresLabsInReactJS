@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import TextareaAutoresize from "@material-ui/core/TextareaAutosize";
-import PatisserieScriptData from "../../../data/PatisserieScriptData.js";
+import PatisserieScriptData from "../../../../data/PatisserieScriptData.js";
 import Spinner from "react-bootstrap/Spinner";
 import Clients from "./Clients";
 import Orders from "./Orders";

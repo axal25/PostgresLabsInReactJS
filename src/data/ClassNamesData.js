@@ -3,21 +3,24 @@ class ClassNamesData {
         return {
             spans: {
                 headerTitle: "badge text-light bg-postgres Rounded-Border border-white",
-                title: "badge text-light bg-postgres Rounded-Border border-secondary",
+                primaryTitle: "badge text-light bg-postgres Rounded-Border border-secondary",
+                secondaryTitle: "badge text-light bg-postgres-light Rounded-Border border-secondary-light",
+                tertiaryTitle: "badge badge-secondary m-2",
                 subTitle: "badge pill-badge badge-dark m-2",
                 warning: "badge badge-pill badge-warning",
                 separator: "Separator badge badge-pill badge-secondary",
-                secondary: "badge badge-secondary m-2",
                 primaryPill: "badge badge-pill bg-postgres border-secondary text-dark m-2",
                 success: "badge badge-success text-dark m-2",
                 instruction: "text-postgres",
             },
             buttons: {
                 primary: {
-                    autoSize: "badge m-2 btn-primary bg-postgres",
-                    setWidth: "badge m-2 btn-primary bg-postgres setWidth"
+                    autoSize: "badge m-2 btn-primary bg-postgres autoSize",
+                    setWidth: "badge m-2 btn-primary bg-postgres setWidth",
                 },
-                secondary: "badge m-2 btn-secondary"
+                secondary: "badge m-2 btn-secondary",
+                tertiary: "badge m-2 btn-outline-secondary bg-postgres text-dark",
+                warning: "badge m-2 btn-warning"
             },
             textAreas: {
                 autoResize: "bg-postgres text-light Rounded-Border Panel-TextareaAutoresize",
@@ -32,15 +35,17 @@ class ClassNamesData {
             divs: {
                 app: "App",
                 header: "App-header",
+                navBar: "NavBar",
+                contents: "Contents",
                 wrapper: "Wrapper",
                 footer: "App-footer",
-                instruction: "Wrap PostgreSQLInstallInstruction",
-                section: "PostgreSQLInstallSection Rounded-Border m-2 bg-dark",
-                navBar: "NavBar",
+                sideBar: "SideBar",
+                sideBarFixed: "NavBar SideBarFixed",
                 postgres: "PostgreSQLInstall",
+                generator: "Panel Generator",
+                section: "Section Rounded-Border m-2 bg-dark",
                 exercise: "Exercise",
                 panel: "Panel",
-                generator: "Panel Generator",
                 form: "form-group mb-2 Center",
                 warning: "bg-warning text-dark Rounded-Border m-2 font-weight-bold Warning",
             },

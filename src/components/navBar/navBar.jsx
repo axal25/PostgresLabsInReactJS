@@ -14,16 +14,23 @@ class NavBar extends Component {
     }
 
     getInstructionBtn() {
-        if (this.props.instructionBtnText) {
-            return (
+        return this.props.instruction && this.props.instruction.title
+            ? (
                 <button
                     className={this.props.classNames.buttons.primary.autoSize}
                     onClick={() => this.props.onInstructionBtnClick()}
-                >{this.props.instructionBtnText}</button>
+                >
+                    {this.props.instruction.title}
+                </button>
+            )
+            : (
+                <button
+                    className={this.props.classNames.buttons.warning}
+                    onClick={() => this.props.onInstructionBtnClick()}
+                >
+                    Undefined
+                </button>
             );
-        } else return (
-            <span className={this.props.classNames.spans.warning}>Undefined instructionBtnText</span>
-        );
     }
 
     getExerciseBtns() {

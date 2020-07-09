@@ -35,6 +35,10 @@ p {
     background: #0064a5;
 }
 
+.bg-postgres-light {
+    background: #008bb9;
+}
+
 .border-postgres {
     -moz-box-shadow: 0 0 0 5px #0064a5;
     -webkit-box-shadow: 0 0 0 5px #0064a5;
@@ -51,6 +55,12 @@ p {
     -moz-box-shadow: 0 0 0 2px #6c757d;
     -webkit-box-shadow: 0 0 0 2px #6c757d;
     box-shadow: 0 0 0 2px #6c757d;
+}
+
+.border-secondary-light {
+    -moz-box-shadow: 0 0 0 2px #585858;
+    -webkit-box-shadow: 0 0 0 2px #585858;
+    box-shadow: 0 0 0 2px #585858;
 }
 
 div.App {
@@ -119,8 +129,12 @@ div.NavBar {
     border-radius: 5px;
 }
 
-div.NavBar > button.setWidth {
+button.setWidth {
     width: 5em;
+}
+
+button.autoSize {
+    width: auto;
 }
 
 span.Separator {
@@ -166,16 +180,13 @@ div.PostgreSQLInstall {
 
 }
 
-div.PostgreSQLInstallSection {
+div.Section {
     padding: 10px;
     font-weight: bold;
     color: #0064a5;
-    line-height: 140%;
-}
-
-div.PostgreSQLInstallInstruction {
     margin: 0;
     font-size: 12px;
+    line-height: 200%;
 }
 
 .Text-Small {
@@ -204,4 +215,48 @@ div.Warning {
 div.Center {
     display: flex;
     justify-content: center;
+}
+
+.Contents {
+    display: grid;
+    grid-template-columns: 32% auto;
+    width: 100%;
+}
+
+.SideBar {
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+.SideBarFixed {
+    top: 240px;
+    position: fixed;
+    width: 30%;
+    height: auto;
+    bottom: 125px;
+    overflow-y: scroll;
+    scrollbar-color: dark;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgb(125, 125, 125);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(50, 50, 50);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(25, 25, 25);
 }

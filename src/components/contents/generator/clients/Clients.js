@@ -1,5 +1,5 @@
-import NamesData from "../../../data/NamesData";
-import SurnamesData from "../../../data/SurnamesData";
+import NamesData from "../../../../data/NamesData";
+import SurnamesData from "../../../../data/SurnamesData";
 
 class Clients {
     constructor(props) {
